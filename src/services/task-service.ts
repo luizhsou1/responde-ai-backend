@@ -6,6 +6,10 @@ export default class TaskService {
     const list: Array<ITaskMongo> = await TaskModel.find({});
     return res.json({ list });
   }
+  public async findOne(req: Request, res: Response) {
+    const task = await TaskModel.findById(req.params.id);
+    return res.json({ task });
+  }
 
   public async create(req: Request, res: Response) {
     const data = req.body as ITask;
