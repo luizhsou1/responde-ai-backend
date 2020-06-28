@@ -1,4 +1,4 @@
-# Cadastrar Questão
+# Registrar Token do Firebase Cloud Messaging
 
 ## Fluxo básico
 
