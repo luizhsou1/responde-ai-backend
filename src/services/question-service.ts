@@ -40,7 +40,16 @@ export default class QuestionService {
         { $set: data },
         { multi: false },
       );
-      return res.status(200).json([]);
+      return res.status(200).json(data);
+    } catch (e) {
+      return res.status(500).json(serverError);
+    }
+  }
+
+  public async remove(req: Request, res: Response) {
+    try {
+      const question = await QuestionModel.remove({ appId: req.params.appId });
+      return res.status(200).json(question);
     } catch (e) {
       return res.status(500).json(serverError);
     }
