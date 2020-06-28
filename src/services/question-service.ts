@@ -6,7 +6,7 @@ export default class QuestionService {
     const list: Array<IQuestionMongo> = await QuestionModel.find({});
     return res.status(200).json(list);
   }
-  public async findOne(req: Request, res: Response) {
+  public async findByAppID(req: Request, res: Response) {
     const question = await QuestionModel.find({ appId: req.params.appId });
     return res.status(200).json(question);
   }

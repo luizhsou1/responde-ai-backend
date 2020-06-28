@@ -14,6 +14,6 @@ export default class QuestionController {
   private setupRoutes() {
     this.router.post(`${this.path}`, this.questionService.create);
     this.router.get(`${this.path}`, this.questionService.findAll);
-    this.router.get(`${this.path}/:appId`, this.questionService.findOne);
+    this.router.get(`${this.path}/:appId`, this.questionService.findByAppID);
   }
 }
