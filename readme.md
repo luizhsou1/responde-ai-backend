@@ -42,3 +42,5 @@ Backend foi feito com intuito especifíco de atender as requisições do projeto
 3. [Buscar Questão Específica](./functionalities/find-question.md)
 4. [Atualizar Questão Específica](./functionalities/update-question.md)
 5. [Deletar Questão Específica](./functionalities/remove-question.md)
+6. [Cadastrar Token do Firebase Cloud Messaging](./functionalities/create-fcm.md)
+7. [Listar Todos Tokens do Firebase Cloud Messaging](./functionalities/find-all-fcm.md)
