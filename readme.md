@@ -18,9 +18,9 @@ Backend foi feito com intuito especifíco de atender as requisições do projeto
 
 ## ✋🏻 Pré-requisitos
 
-- Ambiente configurado com Nodejs e MongoDB. [link útil](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database)
+- Ambiente configurado com Nodejs e MongoDB [link útil](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database).
 
-ou
+  ou
 
 - Docker instalado
 
