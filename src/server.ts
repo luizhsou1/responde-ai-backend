@@ -1,8 +1,8 @@
-import App from './App';
+import App from './app';
 import * as bodyParser from 'body-parser';
 import morgan from 'morgan';
 
-import HomeController from './controllers/HomeController';
+import HomeController from './controllers/home-controller';
 
 const app = new App({
   port: 3000,
