@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
-import TaskModel, { ITask } from '../models/task-model';
+import TaskModel, { ITask, ITaskMongo } from '../models/task-model';
 
 export default class TaskService {
-  public findAll(req: Request, res: Response) {
-    return res.status(200).json([]);
+  public async findAll(req: Request, res: Response) {
+    const list: Array<ITaskMongo> = await TaskModel.find({});
+    return res.json({ list });
   }
 
   public async create(req: Request, res: Response) {
