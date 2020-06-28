@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-with-typescript",
+  "name": "responde-ai-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luizhsou1/nodejs-with-typescript.git"
+    "url": "git+https://github.com/luizhsou1/responde-ai-backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luizhsou1/nodejs-with-typescript/issues"
+    "url": "https://github.com/luizhsou1/responde-ai-backend/issues"
   },
-  "homepage": "https://github.com/luizhsou1/nodejs-with-typescript#readme",
+  "homepage": "https://github.com/luizhsou1/responde-ai-backend#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
