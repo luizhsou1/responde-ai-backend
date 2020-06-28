@@ -38,3 +38,4 @@ Backend foi feito com intuito especifíco de atender as requisições do projeto
 1. [Cadastrar Questão](./functionalities/create-question.md)
 2. [Listar Todas Questões](./functionalities/find-all.questions.md)
 3. [Buscar Questão Específica](./functionalities/find-question.md)
+4. [Atualizar Questão Específica](./functionalities/update-question.md)
