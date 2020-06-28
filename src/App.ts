@@ -23,7 +23,7 @@ class App {
 
   private setControllers(controllers: { forEach: (mid: (controller: any) => void) => void }) {
     controllers.forEach((controller) => {
-      this.app.use('/', controller);
+      this.app.use('/', controller.router);
     });
   }
 }
