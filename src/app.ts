@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import mongoose from 'mongoose';
 
 class App {
   private readonly app: Application;
@@ -7,6 +8,7 @@ class App {
   constructor(config: { port: number; middlewares: any; controllers: any }) {
     this.app = express();
     this.port = config.port;
+    this.setConnectionDB();
     this.setMiddlewares(config.middlewares);
     this.setControllers(config.controllers);
   }
@@ -25,6 +27,10 @@ class App {
     controllers.forEach((controller) => {
       this.app.use('/', controller.router);
     });
+  }
+
+  private setConnectionDB() {
+    mongoose.connect('mongodb://localhost:27017/type', { useNewUrlParser: true, useUnifiedTopology: true });
   }
 }
 
