@@ -25,12 +25,12 @@ class App {
 
   private setControllers(controllers: { forEach: (mid: (controller: any) => void) => void }) {
     controllers.forEach((controller) => {
-      this.app.use('/', controller.router);
+      this.app.use('/api/', controller.router);
     });
   }
 
   private setConnectionDB() {
-    mongoose.connect('mongodb://localhost:27017/type', { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect('mongodb://localhost:27017/respondeAi', { useNewUrlParser: true, useUnifiedTopology: true });
   }
 }
 
