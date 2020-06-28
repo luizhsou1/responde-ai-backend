@@ -1,3 +1,4 @@
+import env from './env';
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 
@@ -5,9 +6,9 @@ class App {
   private readonly app: Application;
   private port: number;
 
-  constructor(config: { port: number; middlewares: any; controllers: any }) {
+  constructor(config: { middlewares: any; controllers: any }) {
     this.app = express();
-    this.port = config.port;
+    this.port = env.port;
     this.setConnectionDB();
     this.setMiddlewares(config.middlewares);
     this.setControllers(config.controllers);
@@ -30,7 +31,7 @@ class App {
   }
 
   private setConnectionDB() {
-    mongoose.connect('mongodb://localhost:27017/respondeAi', { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(env.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
   }
 }
 
