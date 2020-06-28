@@ -17,5 +17,6 @@ export default class QuestionController {
     this.router.get(`${this.path}/:appId`, this.questionService.findByAppID);
     this.router.put(this.path, this.questionService.update);
     this.router.delete(`${this.path}/:appId`, this.questionService.remove);
+    this.router.post(`${this.path}/:appId/answer`, this.questionService.answer);
   }
 }

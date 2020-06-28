@@ -11,6 +11,7 @@ export default class QuestionService {
       return res.status(500).json(serverError);
     }
   }
+
   public async findByAppID(req: Request, res: Response) {
     try {
       const question = await QuestionModel.find({ appId: req.params.appId });
@@ -50,6 +51,39 @@ export default class QuestionService {
     try {
       await QuestionModel.remove({ appId: req.params.appId });
       return res.status(200).json({});
+    } catch (e) {
+      return res.status(500).json(serverError);
+    }
+  }
+
+  public async answer(req: Request, res: Response) {
+    try {
+      const appId = req.params.appId;
+      const { idAlternative, token } = req.body;
+
+      const result = await QuestionModel.find({ appId });
+      const question = result[0];
+
+      if (!question.tokensFCM.includes(token)) {
+        question.tokensFCM.push(token);
+        question.alternatives.forEach((e: any) => {
+          if (e._id == idAlternative) {
+            e.selectedQuantity++;
+          }
+        });
+
+        await QuestionModel.update(
+          {
+            appId,
+          },
+          { $set: question },
+          { multi: false },
+        );
+
+        return res.status(200).json(question);
+      } else {
+        res.status(400).json({ message: 'Token already answered this question' });
+      }
     } catch (e) {
       return res.status(500).json(serverError);
     }

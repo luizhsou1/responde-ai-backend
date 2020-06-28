@@ -9,6 +9,8 @@ export interface IQuestion extends Document {
   appId: String;
   description: String;
   alternatives: Array<IAlternative>;
+  tokenOrigin: String; // Token que criou a pergunta
+  tokensFCM: Array<String>; // Lista com todos os tokens que responderam
 }
 
 export interface IQuestionMongo extends Document {
@@ -16,6 +18,8 @@ export interface IQuestionMongo extends Document {
   appId: String;
   description: String;
   alternatives: Array<IAlternative>;
+  tokenOrigin: String;
+  tokensFCM: Array<String>;
 }
 
 const AltenativeSchema: Schema = new Schema({
@@ -31,6 +35,11 @@ const QuestionSchema: Schema = new Schema(
     appId: String,
     description: String,
     alternatives: [AltenativeSchema],
+    tokenOrigin: String,
+    tokensFCM: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true },
 );
