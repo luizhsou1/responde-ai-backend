@@ -49,7 +49,7 @@ export default class QuestionService {
   public async remove(req: Request, res: Response) {
     try {
       const question = await QuestionModel.remove({ appId: req.params.appId });
-      return res.status(200).json(question);
+      return res.status(200).json({});
     } catch (e) {
       return res.status(500).json(serverError);
     }
