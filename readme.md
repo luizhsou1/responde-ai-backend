@@ -33,7 +33,7 @@ Backend foi feito com intuito especifíco de atender as requisições do projeto
 
 ## 🔥 Instalação e execução (via docker)
 
-1. Rode `docker run camminho_imagem`, para baixar imagem do [Docker Hub](https://google.com.br);
+1. Rode `docker run camminho_imagem`, para baixar imagem do projeto no [Docker Hub](https://google.com.br);
 
 ## ⚡️ Funcionalidades
 
