@@ -1,13 +1,14 @@
 import App from './app';
 import * as bodyParser from 'body-parser';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import TaskController from './controllers/task-controller';
 import myMiddleware from './middlewares/log-middleware';
 
 const app = new App({
   port: 3000,
-  middlewares: [morgan('dev'), bodyParser.urlencoded({ extended: false }), bodyParser.json(), myMiddleware],
+  middlewares: [cors(), morgan('dev'), bodyParser.urlencoded({ extended: false }), bodyParser.json()],
   controllers: [new TaskController()],
 });
 
