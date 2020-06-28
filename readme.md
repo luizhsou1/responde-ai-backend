@@ -2,7 +2,7 @@
   Responde Aí Backend
 </h1>
 
-Backend foi feito com intuito especifíco de atender as requisições do projeto Responde Aí Mobile, que se encontra no [seguinte link](https://github.com/luizhsou1/responde-ai-mobile).
+Backend foi feito com intuito especifíco de atender as requisições do projeto Responde Aí Mobile, que se encontra no seguinte [link](https://github.com/luizhsou1/responde-ai-mobile).
 
 ## 👨🏼‍💻 Desenvolvedor
 
@@ -19,7 +19,9 @@ Backend foi feito com intuito especifíco de atender as requisições do projeto
 ## ✋🏻 Pré-requisitos
 
 - Ambiente configurado com Nodejs e MongoDB. [link útil](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database)
-  ou
+
+ou
+
 - Docker instalado
 
 ## 🔥 Instalação e execução
