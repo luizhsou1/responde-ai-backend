@@ -30,6 +30,7 @@ Backend foi feito com intuito especifíco de atender as requisições do projeto
 2. Entre na pasta `cd responde-ai-backend`;
 3. Rode `npm i` para instalar as dependências;
 4. Rode `npm start` para executar o servidor;
+5. Rode `npm run watch` em uma aba do terminal e `npm run up` ou `npm run up:verbose` em outra aba, para rodar em desenvolvimento e não ter que se preocupar em rodar comandos a cada nova mudança salva.
 
 ## 🔥 Instalação e execução (via docker)
 

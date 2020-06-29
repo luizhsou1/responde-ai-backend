@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "rimraf dist && tsc",
+    "build:watch": "rimraf dist && tsc -w",
+    "watch": "tsc -w",
     "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/server.js",
     "up": "npm run build && docker-compose up -d",
     "up:verbose": "npm run build && docker-compose up",
