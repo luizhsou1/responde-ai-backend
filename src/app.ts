@@ -1,3 +1,4 @@
+import fs from 'fs';
 import env from './config/env';
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
@@ -10,6 +11,7 @@ class App {
     this.app = express();
     this.port = env.port;
     this.setConnectionDB();
+    this.createFileConfigFirebase();
     this.setMiddlewares(config.middlewares);
     this.setControllers(config.controllers);
   }
@@ -34,6 +36,15 @@ class App {
     mongoose.connect(env.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).catch((error) => {
       throw new Error('Não foi possível conectar no MongoDB...');
     });
+  }
+
+  private createFileConfigFirebase() {
+    if (process.env.PORT) {
+      fs.writeFile('responde-ai-cloud-firebase-adminsdk.json', require('./config/firebase-config'), function (err) {
+        if (err) throw err;
+        console.log('File Firebase Config created');
+      });
+    }
   }
 }
 

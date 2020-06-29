@@ -1,7 +1,6 @@
 import { Request, Response, response } from 'express';
 import FCMModel, { IFCM, IFCMMongo } from '../models/fcm-model';
 import serverError from './server-error';
-import env from '../config/env';
 import { randomMessage } from '../config/messages-notification';
 import admin from 'firebase-admin';
 
@@ -37,12 +36,9 @@ export default class FCMService {
 
     // Se produção envia a mensagem via FCM
     if (process.env.PORT) {
-      console.log(env.pathFirebaseJson);
-
       if (!admin.apps.length) {
-        const serviceAccount = require(env.pathFirebaseJson);
         admin.initializeApp({
-          credential: admin.credential.cert(serviceAccount),
+          credential: admin.credential.applicationDefault(),
           databaseURL: 'https://responde-ai-cloud.firebaseio.com',
         });
         console.log('passou de admin.initializeApp');
