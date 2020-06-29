@@ -7,7 +7,7 @@ services:
     volumes:
       - ./data:/data/db
     ports:
-      - '27017:27017'
+      - '17017:27017'
   api:
     container_name: api-container
     restart: always
@@ -19,7 +19,7 @@ services:
       - ./package.json:/usr/src/responde-ai-backend/package.json
       - ./responde-ai-cloud-firebase-adminsdk-jw7h4-5eb2cc0c57.json:/usr/src/responde-ai-backend/responde-ai-cloud-firebase-adminsdk-jw7h4-5eb2cc0c57.json
     ports:
-      - '3000:3000'
+      - '3030:3030'
       - '9222:9222'
     links:
       - mongo
