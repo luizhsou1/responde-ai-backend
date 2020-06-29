@@ -37,12 +37,15 @@ export default class FCMService {
 
     // Se produção envia a mensagem via FCM
     if (process.env.PORT) {
+      console.log(env.pathFirebaseJson);
+
       if (!admin.apps.length) {
         const serviceAccount = require(env.pathFirebaseJson);
         admin.initializeApp({
           credential: admin.credential.cert(serviceAccount),
           databaseURL: 'https://responde-ai-cloud.firebaseio.com',
         });
+        console.log('passou de admin.initializeApp');
       }
 
       admin
