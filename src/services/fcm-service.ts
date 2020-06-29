@@ -1,11 +1,10 @@
-import { Request, Response, response } from 'express';
+import fs from 'fs';
+import { Request, Response } from 'express';
 import FCMModel, { IFCM, IFCMMongo } from '../models/fcm-model';
 import serverError from './server-error';
 import env from '../config/env';
 import { randomMessage } from '../config/messages-notification';
 import admin from 'firebase-admin';
-
-const serviceAccount = require(env.pathFirebaseJson);
 
 export default class FCMService {
   public async findAll(req: Request, res: Response) {
@@ -28,13 +27,6 @@ export default class FCMService {
   }
 
   static async sendNotifications(tokens: Array<string>, question: string, data: { appId: string }) {
-    if (!admin.apps.length) {
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        databaseURL: 'https://responde-ai-cloud.firebaseio.com',
-      });
-    }
-
     const message = {
       notification: {
         title: randomMessage(),
@@ -44,12 +36,28 @@ export default class FCMService {
       data,
     };
 
-    // Se produção envia a mensagem via FCM
-    if (process.env.PORT) {
-      admin
-        .messaging()
-        .sendMulticast(message)
-        .then((response) => console.log(response.successCount + ' messages were sent successfully'));
-    } else console.log(message);
+    console.log(env.pathFirebaseJson);
+    if (fs.existsSync(env.pathFirebaseJson)) {
+      console.log('Entrou no if');
+
+      if (!admin.apps.length) {
+        const serviceAccount = require(env.pathFirebaseJson);
+        admin.initializeApp({
+          credential: admin.credential.cert(serviceAccount),
+          databaseURL: 'https://responde-ai-cloud.firebaseio.com',
+        });
+      }
+
+      // Se produção envia a mensagem via FCM
+      if (process.env.PORT) {
+        admin
+          .messaging()
+          .sendMulticast(message)
+          .then((response) => console.log(response.successCount + ' messages were sent successfully'));
+      } else console.log(message);
+    } else {
+      console.log('Não foi possível enviar a mensagem abaixo para os celulares, pois o arquivo de configuração do firebase não existe!');
+      console.log(message);
+    }
   }
 }
