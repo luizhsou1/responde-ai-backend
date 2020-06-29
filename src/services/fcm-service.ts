@@ -5,8 +5,6 @@ import env from '../config/env';
 import { randomMessage } from '../config/messages-notification';
 import admin from 'firebase-admin';
 
-const serviceAccount = require(env.pathFirebaseJson);
-
 export default class FCMService {
   public async findAll(req: Request, res: Response) {
     try {
@@ -40,8 +38,9 @@ export default class FCMService {
     // Se produção envia a mensagem via FCM
     if (process.env.PORT) {
       if (!admin.apps.length) {
+        const serviceAccount = require(env.pathFirebaseJson);
         admin.initializeApp({
-          credential: admin.credential.applicationDefault(),
+          credential: admin.credential.cert(serviceAccount),
           databaseURL: 'https://responde-ai-cloud.firebaseio.com',
         });
       }
