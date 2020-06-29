@@ -30,7 +30,7 @@ export default class QuestionService {
 
       const list: Array<IFCMMongo> = await FCMModel.find({});
       const fcms = list.filter((e) => e.token !== question.tokenOrigin);
-      FCMService.sendNotifications(fcms.map((e) => e.token) as [string]);
+      FCMService.sendNotifications(fcms.map((e) => e.token) as Array<string>, question.description as string, { appId: question.appId as string });
 
       return res.status(201).json(question);
     } catch (e) {

@@ -1,4 +1,4 @@
-import env from './env';
+import env from './config/env';
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 
