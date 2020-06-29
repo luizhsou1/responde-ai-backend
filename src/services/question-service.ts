@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import QuestionModel, { IQuestion, IQuestionMongo } from '../models/question-model';
 import serverError from './server-error';
+import FCMService from './fcm-service';
+import FCMModel, { IFCMMongo } from '../models/fcm-model';
 
 export default class QuestionService {
   public async findAll(req: Request, res: Response) {
@@ -25,6 +27,11 @@ export default class QuestionService {
     try {
       const data = req.body as IQuestion;
       const question = await QuestionModel.create(data);
+
+      const list: Array<IFCMMongo> = await FCMModel.find({});
+      const fcms = list.filter((e) => e.token !== question.tokenOrigin);
+      FCMService.sendNotifications(fcms.map((e) => e.token) as [string]);
+
       return res.status(201).json(question);
     } catch (e) {
       return res.status(500).json(serverError);

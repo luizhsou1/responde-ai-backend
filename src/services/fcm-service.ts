@@ -21,4 +21,10 @@ export default class FCMService {
       return res.status(500).json(serverError);
     }
   }
+
+  static async sendNotifications(tokens: [string]) {
+    console.log('----------------------');
+    console.log('Notificandos os tokens:');
+    console.log(tokens);
+  }
 }
