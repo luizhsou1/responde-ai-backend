@@ -28,6 +28,9 @@ PUT .../api/questions
 "text": "C"
 },
 {
+"text": "Go"
+},
+{
 "text": "PHP"
 },
 {
