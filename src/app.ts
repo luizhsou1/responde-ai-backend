@@ -15,7 +15,7 @@ class App {
   }
 
   public listen() {
-    this.app.listen(this.port, () => console.log('Server is running...'));
+    this.app.listen(this.port, () => console.log(`Server is running...`));
   }
 
   private setMiddlewares(middlewares: { forEach: (mid: (middleware: any) => void) => void }) {
@@ -31,7 +31,9 @@ class App {
   }
 
   private setConnectionDB() {
-    mongoose.connect(env.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(env.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }).catch((error) => {
+      throw new Error('Não foi possível conectar no MongoDB...');
+    });
   }
 }
 

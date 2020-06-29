@@ -17,7 +17,7 @@ services:
     volumes:
       - ./dist/:/usr/src/responde-ai-backend/dist/
       - ./package.json:/usr/src/responde-ai-backend/package.json
-      - ./responde-ai-cloud-firebase-adminsdk-jw7h4-5eb2cc0c57.json:/usr/src/responde-ai-backend/responde-ai-cloud-firebase-adminsdk-jw7h4-5eb2cc0c57.json
+      - ./responde-ai-cloud-firebase-adminsdk.json:/usr/src/responde-ai-cloud-firebase-adminsdk.json
     ports:
       - '3030:3030'
       - '9222:9222'
