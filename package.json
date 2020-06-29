@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
+    "dev": "nodemon dist/server.js",
     "build": "rimraf dist && tsc",
     "build:watch": "rimraf dist && tsc -w",
     "watch": "tsc -w",
